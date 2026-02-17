@@ -1,37 +1,105 @@
-// Main Data Source - This file matches what everyone sees
-// To update for everyone: 
-// 1. Upload in the app
-// 2. Click "Save Changes to File"
-// 3. Replace this data.js file with the downloaded one
-
 const globalLMSData = {
-    'O/L Commerce': {
-        'Grade 10': {
-            'Notes': [],
-            'Model Papers': [],
-            'Unit Papers (Online)': [],
-            'Videos': []
+    "O/L Commerce": {
+        "Grade 10": {
+            "Notes": [
+                {
+                    "title": "Short Note",
+                    "date": "2026-02-17T13:23:01.313Z",
+                    "url": "#",
+                    "type": "notes"
+                }
+            ],
+            "Model Papers": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
         },
-        'Grade 11': {
-            'Notes': [],
-            'Model Papers': [],
-            'Unit Papers (Online)': [],
-            'Videos': []
+        "Grade 11": {
+            "Notes": [],
+            "Model Papers": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
         }
     },
-    'A/L Accounting': {
-        // Lessons 1-16 will be initialized if empty
+    "A/L Accounting": {
+        "Lesson 1": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 2": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 3": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 4": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 5": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 6": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 7": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 8": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 9": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 10": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 11": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 12": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 13": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 14": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 15": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        },
+        "Lesson 16": {
+            "Notes": [],
+            "Unit Papers (Online)": [],
+            "Videos": []
+        }
     }
 };
-
-// Initialize A/L Accounting Lessons if they don't exist
-for (let i = 1; i <= 16; i++) {
-    const lessonKey = `Lesson ${i}`;
-    if (!globalLMSData['A/L Accounting'][lessonKey]) {
-        globalLMSData['A/L Accounting'][lessonKey] = {
-            'Notes': [],
-            'Unit Papers (Online)': [],
-            'Videos': []
-        };
-    }
-}
