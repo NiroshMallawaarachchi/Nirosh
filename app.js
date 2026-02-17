@@ -23,28 +23,20 @@ const state = {
 // Initialize Data
 function init() {
     checkAuth();
-    // Generate 16 lessons for A/L Accounting
-    for (let i = 1; i <= 16; i++) {
-        state.data['A/L Accounting'][`Lesson ${i}`] = {
-            'Notes': [],
-            'Unit Papers (Online)': [],
-            'Videos': []
-        };
-    }
 
-    // Load data from local storage if valid
+    // Check local storage for session updates, but baseline is globalLMSData
     const savedData = localStorage.getItem('lmsData');
     if (savedData) {
-        try {
-            const parsed = JSON.parse(savedData);
-            // Simple merge or replacement. For now, replace if structure matches roughly
-            if (parsed['O/L Commerce']) state.data = parsed;
-        } catch (e) {
-            console.error("Data load error", e);
+        state.data = JSON.parse(savedData);
+    } else {
+        // Use the static data from data.js
+        if (typeof globalLMSData !== 'undefined') {
+            state.data = globalLMSData;
         }
     }
 
     renderHome();
+    checkAdmin();
 }
 
 // Navigation Functions
@@ -385,8 +377,39 @@ function checkAuth() {
 function logout() {
     if (confirm('Are you sure you want to logout?')) {
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('currentUser');
         window.location.href = 'login.html';
     }
+}
+
+function checkAdmin() {
+    const userStr = localStorage.getItem('currentUser');
+    if (userStr) {
+        const user = JSON.parse(userStr);
+        document.getElementById('user-name').textContent = user.username;
+        document.getElementById('user-avatar').src = `https://ui-avatars.com/api/?name=${user.username}&background=random`;
+
+        // Show Save Button for Admin
+        if (user.role === 'admin') {
+            document.getElementById('save-data-container').style.display = 'block';
+        }
+    }
+}
+
+// Function to download the current state as a JS file
+function saveDataToFile() {
+    const dataStr = "const globalLMSData = " + JSON.stringify(state.data, null, 4) + ";";
+    const blob = new Blob([dataStr], { type: "text/javascript" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "data.js";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    alert("File 'data.js' downloaded!\n\nPlease replace the existing 'data.js' file in your project folder with this new one to make changes visible to everyone.");
 }
 
 // Initial Run
