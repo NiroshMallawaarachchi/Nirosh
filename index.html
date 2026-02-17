@@ -25,9 +25,13 @@
                 <button onclick="navigateTo('home')" class="nav-btn active"><i class="fa-solid fa-house"></i>
                     Home</button>
                 <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Nirosh+M&background=random" alt="Profile">
-                    <span>Admin</span>
+                    <img src="https://ui-avatars.com/api/?name=Nirosh+M&background=random" alt="Profile"
+                        id="user-avatar">
+                    <span id="user-name">Admin</span>
                 </div>
+                <button onclick="logout()" class="nav-btn" title="Logout" style="color: #ff5252;">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
             </div>
         </nav>
 

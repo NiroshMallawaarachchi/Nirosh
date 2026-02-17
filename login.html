@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nirosh Mallawaarachchi LMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 3rem;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .login-logo {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .login-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .error-msg {
+            color: #ff5252;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px 12px 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary), #3949ab);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <div class="login-logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-section">
+            <h2 class="login-title">Nirosh Mallawaarachchi LMS</h2>
+            <p class="login-subtitle">Sign in to continue to your dashboard</p>
+            <p class="error-msg" id="login-error">Invalid username or password</p>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="login-username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                </div>
+                <div style="text-align: right; margin-bottom: 1rem;">
+                    <a href="#" onclick="showSection('forgot-password'); return false;"
+                        style="color: var(--secondary); font-size: 0.85rem; text-decoration: none;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">
+                    Login <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+            <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                Don't have an account? <a href="#" onclick="showSection('register'); return false;"
+                    style="color: var(--secondary); text-decoration: none; font-weight: 600;">Register</a>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-section" style="display: none;">
+            <h2 class="login-title">Create Account</h2>
+            <p class="login-subtitle">Join our learning community</p>
+            <p class="error-msg" id="register-error">Username already exists</p>
+
+            <form id="register-form">
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="reg-username" placeholder="Choose Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="reg-email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="reg-password" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-check-double"></i>
+                    <input type="password" id="reg-confirm-password" placeholder="Confirm Password" required>
+                </div>
+                <button type="submit" class="login-btn">
+                    Register <i class="fa-solid fa-user-plus"></i>
+                </button>
+            </form>
+            <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                Already have an account? <a href="#" onclick="showSection('login'); return false;"
+                    style="color: var(--secondary); text-decoration: none; font-weight: 600;">Login</a>
+            </div>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgot-password-section" style="display: none;">
+            <h2 class="login-title">Reset Password</h2>
+            <p class="login-subtitle">Enter your details to reset password</p>
+            <p class="error-msg" id="reset-error">User not found</p>
+            <p style="color: #4caf50; font-size: 0.9rem; margin-bottom: 1rem; display: none;" id="reset-success">
+                Password reset successfully!</p>
+
+            <form id="reset-form">
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="reset-username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="reset-new-password" placeholder="New Password" required>
+                </div>
+                <button type="submit" class="login-btn">
+                    Reset Password <i class="fa-solid fa-rotate"></i>
+                </button>
+            </form>
+            <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+                Remembered it? <a href="#" onclick="showSection('login'); return false;"
+                    style="color: var(--secondary); text-decoration: none; font-weight: 600;">Back to Login</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>

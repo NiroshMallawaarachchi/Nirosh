@@ -22,6 +22,7 @@ const state = {
 
 // Initialize Data
 function init() {
+    checkAuth();
     // Generate 16 lessons for A/L Accounting
     for (let i = 1; i <= 16; i++) {
         state.data['A/L Accounting'][`Lesson ${i}`] = {
@@ -372,6 +373,20 @@ function deleteFile(index) {
 
 function downloadFile(url) {
     alert("Functionality to download files would connect to backend here. This is a demo.");
+}
+
+function checkAuth() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn !== 'true') {
+        window.location.href = 'login.html';
+    }
+}
+
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    }
 }
 
 // Initial Run
